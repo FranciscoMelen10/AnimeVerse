@@ -44,5 +44,20 @@ async function GetAnime(id) {
 
 }
 
+async function GetGalleryAnime(id) {
+    const url = `https://api.jikan.moe/v4/anime/${id}/pictures`
 
-export { GetPageAnime, GetSearchAnime, GetAnime }
+    try {
+        const response = await fetch(url)
+        const { data } = await response.json();
+        //const {data, pagination} = await response.json();
+
+        return data
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+
+export { GetPageAnime, GetSearchAnime, GetAnime, GetGalleryAnime }

@@ -8,11 +8,11 @@ function AnimeItem({ img, title, id, date }) {
           src={`${img}`}
           alt={`Imagen de ${title}`}
           loading="lazy"
-          className="object-cover h-[400px]"
+          className="rounded-2xl object-cover h-[400px]"
           width={300}
           height={400}
         />
-      <Link className=" text-color_100 font-semibold text-[20px] bg-transparent" href={`/anime/${id}`}>
+      <Link className="hover:underline text-color_100 font-semibold text-[20px] bg-transparent" href={`/anime/${id}`}>
         {title}
       </Link>
       <h3 className="text-color_400">{date}</h3>
