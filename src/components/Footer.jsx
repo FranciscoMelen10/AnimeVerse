@@ -1,10 +1,23 @@
+import Image from "next/image";
+import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="p-4 font-medium text-center text-color_100 mt-5 text-[20px] ">
-        <h1 className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-transparent bg-clip-text">
-          @FranciscoMelen10
-        </h1>
+    <footer className="flex justify-between w-full max-w-[1000px] p-6 font-medium text-color_100 mt-5 text-[20px] ">
+      <h1 className="text-color_100 text-[16px]">
+      © Francisco De Jesús Meléndez Simplina 2024, All Rights Reserved
+      </h1>
+      <picture className="flex gap-4">
+        <Link href="https://www.facebook.com/chicoyfrancisco.melendez/">
+          <Image alt="Logo de facebook" src="/facebook.svg" width={25} height={25} />
+        </Link>
+        <Link href="https://www.instagram.com/coooooooooooyyyyyyy/">
+          <Image alt="Logo de instagram" src="/instagram.svg" width={25} height={25} />
+        </Link>
+        <Link href="https://github.com/FranciscoMelen10">
+          <Image alt="Logo de github" src="/github.svg" width={25} height={25} />
+        </Link>
+      </picture>
     </footer>
   );
 }

@@ -1,23 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function AnimeItem({ img, title, id }) {
+function AnimeItem({ img, title, id, date }) {
   return (
-    <div className="relative rounded-2xl w-[300px] h-[400px] my-2 overflow-hidden">
-      <div className="absolute inset-0">
+    <div className="flex justify-start items-start flex-col min-h-[550px] w-[300px] gap-2">
         <Image
           src={`${img}`}
           alt={`Imagen de ${title}`}
           loading="lazy"
-          className="rounded-2xl object-cover h-[400px]"
+          className="object-cover h-[400px]"
           width={300}
           height={400}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#ffffff00] to-[#0c0c0c59] opacity-30 "></div>
-      </div>
-      <Link className="absolute bottom-0 left-0 text-white font-bold text-[20px] p-4 bg-transparent" href={`/anime/${id}`}>
+      <Link className=" text-color_100 font-semibold text-[20px] bg-transparent" href={`/anime/${id}`}>
         {title}
       </Link>
+      <h3 className="text-color_400">{date}</h3>
     </div>
   );
 }

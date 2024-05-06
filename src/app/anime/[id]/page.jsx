@@ -18,7 +18,7 @@ export default async function AnimeSection({ params }) {
 
   return (
     <>
-      <div className="max-w-[1000px] my-5">
+      <div className="max-w-[1000px] my-5 px-5">
         <div>
           <Image
             src={images.webp.large_image_url}
