@@ -30,7 +30,7 @@ export default async function AnimeSection({ params }) {
 
   return (
     <>
-      <div className="max-w-[1000px] my-5 px-5">
+      <div className="max-w-[1000px] min-w-[1000px] my-5">
         <div>
           <Image
             src={images.webp.large_image_url}
@@ -80,7 +80,12 @@ export default async function AnimeSection({ params }) {
               {/* Validation source */}
               {typeof aired.string == "string" ? (
                 <div className="flex justify-center items-center gap-1">
-                  <Image src="/calendar.svg" alt="Book" width={22} height={22} />
+                  <Image
+                    src="/calendar.svg"
+                    alt="Book"
+                    width={22}
+                    height={22}
+                  />
                   <h4 className="font-normal text-right text-[18px]">
                     {aired.string}
                   </h4>
@@ -102,33 +107,56 @@ export default async function AnimeSection({ params }) {
               );
             })}
           </section>
-          <p className="text-color_300 text-[18px] pb-6 leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
-            {synopsis}
-          </p>
-          <p className="text-color_300 text-[18px] leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
-            {background}
-          </p>
+          <section className="min-h-[300px]">
+            {typeof synopsis == "string" && typeof synopsis == "string" ? (
+              <>
+                <p className="text-color_300 text-[18px] pb-6 leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
+                  {synopsis}
+                </p>
+                <p className="text-color_300 text-[18px] leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
+                  {background}
+                </p>
+              </>
+            ) : (
+              <h1>Description not available</h1>
+            )}
+          </section>
         </div>
 
         {/* Trailer */}
-        <div className="my-6 flex items-center justify-center">
-          <Video video={trailer.embed_url} />
-        </div>
+        {
+          /* Validation */
+          typeof trailer.embed_url == "string" ? (
+            <div className="my-6 flex items-center justify-center flex-col">
+              <h1 className="font-semibold text-4xl pb-6 text-color_100 text-center underline">{`${title}'s trailer`}</h1>
+              <Video video={trailer.embed_url} />
+            </div>
+          ) : (
+            ""
+          )
+        }
 
-        <picture className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
-          {infoGallery.map((info, index) => {
-            return (
-              <Image
-                src={info.webp.image_url}
-                key={index}
-                alt={`Imagen de ${title}`}
-                className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"
-                width={300}
-                height={400}
-              />
-            );
-          })}
-        </picture>
+        {infoGallery.length !== 0 ? (
+          <>
+            <h1 className="font-semibold text-4xl pt-6 text-color_100 text-center underline">{`${title}'s Galery`}</h1>
+            <picture className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
+              {infoGallery.map((info, index) => {
+                return (
+                  <Image
+                    src={info.webp.image_url}
+                    key={index}
+                    alt={`Imagen de ${title}`}
+                    className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"
+                    width={300}
+                    height={400}
+                  />
+                );
+              })}
+            </picture>
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

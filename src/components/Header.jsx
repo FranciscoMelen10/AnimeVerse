@@ -4,7 +4,7 @@ import Search from "./Search";
 function Header() {
   return (
     <header className="p-4 flex justify-center items-start w-full border-b-2 border-b-[#333]">
-      <nav className="flex justify-between items-center w-full gap-12 max-w-[1000px]">
+      <nav className="flex justify-between items-center w-full gap-2 max-w-[1000px] max-[450px]:flex-col">
         <Link className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-transparent bg-clip-text font-bold text-2xl" href="/">
           AnimeVerse
         </Link>

@@ -14,13 +14,14 @@ async function GetPageAnime(page) {
 
 }
 
-async function GetSearchAnime(query) {
-    const url = `https://api.jikan.moe/v4/anime?q=${query}`
+async function GetSearchAnime(query, id = 1) {
+    const url = `https://api.jikan.moe/v4/anime?q=${query}&page=${id}`
 
     try {
         const response = await fetch(url)
         const { data, pagination } = await response.json();
         //const {data, pagination} = await response.json();
+
 
         return {data, pagination}
     } catch (error) {

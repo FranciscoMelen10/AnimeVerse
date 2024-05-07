@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="flex justify-between w-full max-w-[1000px] p-6 font-medium text-color_100 mt-5 text-[20px] ">
+    <footer className="flex justify-between w-full max-w-[1000px] gap-4 p-6 font-medium text-color_100 mt-5 text-[20px] max-md:flex-col-reverse max-md:items-center max-md:text-center ">
       <h1 className="text-color_100 text-[16px]">
       © Francisco De Jesús Meléndez Simplina 2024, All Rights Reserved
       </h1>

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <main className="flex flex-col justify-center items-center text-color_100  ">
+        <main className="flex flex-col justify-center items-center text-color_100 ">
           <Header />
           {children}
           <Footer/>
