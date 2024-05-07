@@ -10,8 +10,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "AnimeView",
-  description: "Website made by Francisco De Jesús Mélendez Simplina, this page was created to focuse the anime lovers",
+  title: "AnimeVerse",
+  description: "Welcome to the website made by Francisco De Jesús Mélendez Simplina! This Website is dedicated for anime lovers.",
   icons: {
     icon: '/Logo.ico'
   }};

@@ -1,4 +1,4 @@
-
+//Get all the data of each anime and automatic navigation
 async function GetPageAnime(page) {
     const url = `https://api.jikan.moe/v4/anime?page=${page}`
 
@@ -14,6 +14,7 @@ async function GetPageAnime(page) {
 
 }
 
+//Filter all animes that user want to search it
 async function GetSearchAnime(query, id = 1) {
     const url = `https://api.jikan.moe/v4/anime?q=${query}&page=${id}`
 
@@ -30,6 +31,7 @@ async function GetSearchAnime(query, id = 1) {
 
 }
 
+// Get all data of anime that user selected
 async function GetAnime(id) {
     const url = `https://api.jikan.moe/v4/anime/${id}/full`
 
@@ -45,6 +47,7 @@ async function GetAnime(id) {
 
 }
 
+// Photo gallery according to the anime that the user selected
 async function GetGalleryAnime(id) {
     const url = `https://api.jikan.moe/v4/anime/${id}/pictures`
 
