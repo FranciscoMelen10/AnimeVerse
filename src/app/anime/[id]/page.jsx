@@ -30,18 +30,18 @@ export default async function AnimeSection({ params }) {
 
   return (
     <>
-      <div className="max-w-[1000px] min-w-[1000px] my-5">
-        <div>
+      <div className="max-w-[1000px] my-5 p-4">
+        <div className="max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center max-sm:text-center max-sm:gap-2">
           <Image
             src={images.webp.large_image_url}
             alt={`Imagen de ${title}`}
-            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"
+            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px] max-sm:float-none"
             width={300}
             height={400}
           />
           <h1 className="font-semibold text-5xl pb-6">{title}</h1>
           <section className="flex justify-between pb-4">
-            <article className="flex items-center gap-4 text-[18px]">
+            <article className="flex items-center flex-wrap gap-4 text-[18px] max-sm:justify-center">
               {/* Validation score */}
               {typeof score == "number" ? (
                 <div className="flex justify-center items-center gap-1">
@@ -95,11 +95,11 @@ export default async function AnimeSection({ params }) {
               )}
             </article>
           </section>
-          <section className="flex gap-2 mb-5">
+          <section className="flex flex-wrap max-sm:justify-center gap-2 mb-5 ">
             {genres.map((info) => {
               return (
                 <p
-                  className="flex items-center justify-center border px-2 rounded-full text-[15px] text-color_200 font-light"
+                  className=" border px-2 rounded-full text-[15px] text-color_200 font-light"
                   key={info.mal_id}
                 >
                   {info.name}
@@ -107,7 +107,7 @@ export default async function AnimeSection({ params }) {
               );
             })}
           </section>
-          <section className="min-h-[300px]">
+          <section className="min-h-[300px] max-sm:min-h-full">
             {typeof synopsis == "string" && typeof synopsis == "string" ? (
               <>
                 <p className="text-color_300 text-[18px] pb-6 leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
@@ -127,7 +127,7 @@ export default async function AnimeSection({ params }) {
         {
           /* Validation */
           typeof trailer.embed_url == "string" ? (
-            <div className="my-6 flex items-center justify-center flex-col">
+            <div className="my-6 flex items-center justify-center flex-col w-full p-4">
               <h1 className="font-semibold text-4xl pb-6 text-color_100 text-center underline">{`${title}'s trailer`}</h1>
               <Video video={trailer.embed_url} />
             </div>
