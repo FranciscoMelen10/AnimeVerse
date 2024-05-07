@@ -30,18 +30,18 @@ export default async function AnimeSection({ params }) {
 
   return (
     <>
-      <div className="max-w-[1000px] my-5 p-4">
-        <div className="max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center max-sm:text-center max-sm:gap-2">
+      <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full">
+        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center max-md:gap-2">
           <Image
             src={images.webp.large_image_url}
             alt={`Imagen de ${title}`}
-            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px] max-sm:float-none"
-            width={300}
-            height={400}
+            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[500px] w-[350px] max-md:float-none"
+            width={400}
+            height={500}
           />
-          <h1 className="font-semibold text-5xl pb-6">{title}</h1>
-          <section className="flex justify-between pb-4">
-            <article className="flex items-center flex-wrap gap-4 text-[18px] max-sm:justify-center">
+          <h1 className="font-semibold text-5xl pb-6 max-md:pb-2">{title}</h1>
+          <section className="flex justify-between pb-4 max-md:pb-2">
+            <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
               {/* Validation score */}
               {typeof score == "number" ? (
                 <div className="flex justify-center items-center gap-1">
@@ -95,7 +95,7 @@ export default async function AnimeSection({ params }) {
               )}
             </article>
           </section>
-          <section className="flex flex-wrap max-sm:justify-center gap-2 mb-5 ">
+          <section className="flex flex-wrap max-md:justify-center gap-2 mb-5 max-md:mb-2">
             {genres.map((info) => {
               return (
                 <p
@@ -107,7 +107,7 @@ export default async function AnimeSection({ params }) {
               );
             })}
           </section>
-          <section className="min-h-[300px] max-sm:min-h-full">
+          <section className="min-h-[400px] max-md:min-h-full">
             {typeof synopsis == "string" && typeof synopsis == "string" ? (
               <>
                 <p className="text-color_300 text-[18px] pb-6 leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">

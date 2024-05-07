@@ -1,4 +1,4 @@
-import AnimeItem from "@/components/Cards";
+import AnimeItem from "@/components/AnimeItem";
 import Pagination from "@/components/Pagination";
 import { GetPageAnime } from "@/api/anime";
 import NotFoundComponent from "@/components/NotFound";
@@ -7,7 +7,7 @@ export default async function Home() {
   const { data, pagination } = await GetPageAnime(1);
   return (
     <>
-      <div className="my-5 flex flex-wrap items-center justify-center gap-6 max-w-[1800px] px-5 min-h-screen">
+      <div className="my-5 flex flex-wrap items-center justify-center gap-6 max-w-[1400px] px-5 min-h-screen">
         {
           // Validation If the data isn't correct
           typeof data == "object" ? (

@@ -5,7 +5,7 @@ export default function Video({ video }) {
     <iframe
       src={video}
       loading="lazy"
-      className="w-[700px] h-[500px] max-md:w-full max-md:h-[400px] "
+      className="w-[700px] h-[500px] max-md:w-full max-md:h-[350px] "
     />
   );
 }
