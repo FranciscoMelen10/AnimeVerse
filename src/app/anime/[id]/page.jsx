@@ -1,10 +1,12 @@
-import { GetAnime, GetGalleryAnime } from "@/api/anime";
+import { GetAnime, GetGalleryAnime, GetMainCharactersAnime } from "@/api/anime";
 import Image from "next/image";
 import Video from "@/components/Video";
+import CharacterItem from "@/components/CharacterItem";
 
 export default async function AnimeSection({ params }) {
   const infoPage = await GetAnime(params.id);
   const infoGallery = await GetGalleryAnime(params.id);
+  const infoCharacters = await GetMainCharactersAnime(params.id);
 
   const {
     images,
@@ -136,9 +138,30 @@ export default async function AnimeSection({ params }) {
           )
         }
 
+        {infoCharacters.length !== 0 ? (
+          <>
+            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center underline">{`Main characters of ${title}`}</h1>
+            <div className="flex items-center justify-center flex-wrap mt-10 gap-4 gap-y-6">
+              {infoCharacters.map((info) => {
+                return (
+                  <CharacterItem
+                    key={info.mal_id}
+                    name={info.character.name}
+                    img={info.character.images.webp.image_url}
+                    favorites={info.favorites}
+                    url={info.character.url}
+                  />
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          ""
+        )}
+
         {infoGallery.length !== 0 ? (
           <>
-            <h1 className="font-semibold text-4xl pt-6 text-color_100 text-center underline">{`${title}'s Galery`}</h1>
+            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center underline">{`${title}'s Galery`}</h1>
             <picture className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
               {infoGallery.map((info, index) => {
                 return (

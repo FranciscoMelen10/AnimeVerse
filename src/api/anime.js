@@ -63,5 +63,22 @@ async function GetGalleryAnime(id) {
 
 }
 
+// Photo gallery according to the anime that the user selected
+async function GetMainCharactersAnime(id) {
+    const url = `https://api.jikan.moe/v4/anime/${id}/characters`
 
-export { GetPageAnime, GetSearchAnime, GetAnime, GetGalleryAnime }
+    try {
+        const response = await fetch(url)
+        const { data } = await response.json();
+        const characters = data.filter((data) => data.role === "Main")
+
+        return characters
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+
+
+export { GetPageAnime, GetSearchAnime, GetAnime, GetGalleryAnime, GetMainCharactersAnime }
