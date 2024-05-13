@@ -37,7 +37,7 @@ export default async function AnimeSection({ params }) {
           <Image
             src={images.webp.large_image_url}
             alt={`Imagen de ${title}`}
-            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[500px] w-[350px] max-md:float-none"
+            className="rounded-2xl object-cover float-right ml-4 mb-2 h-[500px] w-[350px] max-md:float-none max-md:ml-0"
             width={400}
             height={500}
           />
