@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 function Search({ placeholder, searchValue = "" }) {
-  const [inputValue, setInputValue] = useState(searchValue);
+  const [inputValue, setInputValue] = useState(searchValue.replace(/%20/g, " "));
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value); 
