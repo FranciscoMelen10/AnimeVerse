@@ -2,6 +2,7 @@ import AnimeItem from "@/components/AnimeItem";
 import { GetSearchAnime } from "@/api/anime";
 import Pagination from "@/components/Pagination";
 import NotFoundComponent from "@/components/NotFound";
+import Header from "@/components/Header";
 
 export default async function SearchPage({ params }) {
   // console.log("id:" + params.id)
@@ -10,6 +11,7 @@ export default async function SearchPage({ params }) {
   const { data, pagination } = await GetSearchAnime(params.search, params.id);
   return (
     <>
+      <Header searchValue={params.search} />
       <div className="my-5 flex flex-wrap items-center justify-center gap-6 max-w-[1400px] px-5 min-h-screen">
         {
           // Validation If the data isn't correct
@@ -21,7 +23,7 @@ export default async function SearchPage({ params }) {
                   <AnimeItem
                     key={info.mal_id}
                     title={info.title}
-                    img={info.images.webp.image_url}
+                    img={info.images.jpg.image_url}
                     id={info.mal_id}
                     date={info.aired.string}
                   />

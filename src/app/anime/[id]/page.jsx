@@ -2,6 +2,7 @@ import { GetAnime, GetGalleryAnime, GetMainCharactersAnime } from "@/api/anime";
 import Image from "next/image";
 import Video from "@/components/Video";
 import CharacterItem from "@/components/CharacterItem";
+import Header from "@/components/Header";
 
 export default async function AnimeSection({ params }) {
   const infoPage = await GetAnime(params.id);
@@ -32,10 +33,11 @@ export default async function AnimeSection({ params }) {
 
   return (
     <>
+    <Header/>
       <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full">
         <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center max-md:gap-2">
           <Image
-            src={images.webp.large_image_url}
+            src={images.jpg.image_url}
             alt={`Imagen de ${title}`}
             className="rounded-2xl object-cover float-right ml-4 mb-2 h-[500px] w-[350px] max-md:float-none max-md:ml-0"
             width={400}
@@ -147,7 +149,7 @@ export default async function AnimeSection({ params }) {
                   <CharacterItem
                     key={info.mal_id}
                     name={info.character.name}
-                    img={info.character.images.webp.image_url}
+                    img={info.character.images.jpg.image_url}
                     favorites={info.favorites}
                     url={info.character.url}
                   />
@@ -166,7 +168,7 @@ export default async function AnimeSection({ params }) {
               {infoGallery.map((info, index) => {
                 return (
                   <Image
-                    src={info.webp.image_url}
+                    src={info.jpg.image_url}
                     key={index}
                     alt={`Imagen de ${title}`}
                     className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"

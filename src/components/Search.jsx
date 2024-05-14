@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function Search({ placeholder }) {
-  const [inputValue, setInputValue] = useState("");
+function Search({ placeholder, searchValue = "" }) {
+  const [inputValue, setInputValue] = useState(searchValue);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value); 

@@ -1,6 +1,5 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 
@@ -25,7 +24,6 @@ export default function RootLayout({ children }) {
       <GoogleTagManager gtmId="G-EBYLZNFLTS" />
       <body className={poppins.className}>
         <main className="flex flex-col justify-center items-center text-color_100 ">
-          <Header />
           {children}
           <Footer />
         </main>
