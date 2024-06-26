@@ -9,3 +9,7 @@
   margin: 0;
   background: #050505;
 }
+
+.contenedor{
+  height: calc(100vh - 100px);
+}
