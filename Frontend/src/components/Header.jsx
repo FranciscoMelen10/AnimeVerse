@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Search from "./Search";
+import Search from "./Search.jsx";
 import Image from "next/image";
 
 function Header({searchValue = ""}) {

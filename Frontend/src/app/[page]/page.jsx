@@ -1,8 +1,8 @@
-import AnimeItem from "@/components/AnimeItem";
-import Pagination from "@/components/Pagination";
-import { GetPageAnime } from "@/api/anime";
-import NotFoundComponent from "@/components/NotFound";
-import Header from "@/components/Header";
+import AnimeItem from "../../components/AnimeItem.jsx";
+import Pagination from "../../components/Pagination.jsx";
+import { GetPageAnime } from "../../api/anime.js";
+import NotFoundComponent from "../../components/NotFound.jsx";
+import Header from "../../components/Header.jsx";
 
 export default async function AnimePages({ params }) {
   const { data, pagination } = await GetPageAnime(params.page);

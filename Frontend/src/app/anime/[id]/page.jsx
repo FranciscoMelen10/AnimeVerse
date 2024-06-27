@@ -1,8 +1,8 @@
-import { GetAnime, GetGalleryAnime, GetMainCharactersAnime } from "@/api/anime";
+import { GetAnime, GetGalleryAnime, GetMainCharactersAnime } from "../../../api/anime.js";
 import Image from "next/image";
-import Video from "@/components/Video";
-import CharacterItem from "@/components/CharacterItem";
-import Header from "@/components/Header";
+import Video from "../../../components/Video.jsx";
+import CharacterItem from "../../../components/CharacterItem.jsx";
+import Header from "../../../components/Header.jsx";
 
 export default async function AnimeSection({ params }) {
   const infoPage = await GetAnime(params.id);

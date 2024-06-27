@@ -1,14 +1,17 @@
-import AnimeItem from "@/components/AnimeItem";
-import Pagination from "@/components/Pagination";
-import { GetPageAnime } from "@/api/anime";
-import NotFoundComponent from "@/components/NotFound";
-import Header from "@/components/Header";
+import AnimeItem from "../../../../components/AnimeItem.jsx";
+import { GetSearchAnime } from "../../../../api/anime.js";
+import Pagination from "../../../../components/Pagination.jsx";
+import NotFoundComponent from "../../../../components/NotFound.jsx";
+import Header from "../../../../components/Header.jsx";
 
-export default async function Home() {
-  const { data, pagination } = await GetPageAnime(1);
+export default async function SearchPage({ params }) {
+  // console.log("id:" + params.id)
+  // console.log("id:" + params.search)
+
+  const { data, pagination } = await GetSearchAnime(params.search, params.id);
   return (
     <>
-      <Header />
+      <Header searchValue={params.search} />
       <div className="my-5 flex flex-wrap items-center justify-center gap-6 max-w-[1400px] px-5 min-h-screen">
         {
           // Validation If the data isn't correct
@@ -36,12 +39,12 @@ export default async function Home() {
       </div>
       {
         // Validation If the API has an error with the query
-        typeof pagination === "object" ? (
-          <Pagination pagination={pagination} />
+        typeof pagination == "object" ? (
+          <Pagination pagination={pagination} url={`./`} />
         ) : (
           ""
         )
-      }
+      }{" "}
     </>
   );
 }

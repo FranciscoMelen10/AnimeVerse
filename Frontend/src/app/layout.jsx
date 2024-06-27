@@ -1,6 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer.jsx";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 const poppins = Poppins({

@@ -2,9 +2,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { crearUsuario } from "../../controllers/usuario.controller";
+import { useRouter } from "next/navigation";
 
-export default function Login() {
+export default function Registar() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -12,8 +15,17 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const response = await crearUsuario(data);
+    if (response.id !== null) {
+      alert("Se creo correctamente");
+      router.push("/");
+      // Agregar usuario en las cookies
+    } else {
+      alert(
+        "Ya existe un usuario con ese correo electrónico. Intente con otro correo"
+      );
+    }
   };
 
   const changePassword = () => {
@@ -34,15 +46,29 @@ export default function Login() {
             width={350}
             height={350}
           />
+          <h1 className="text-center font-semibold text-[30px] ">Registrar</h1>
+          <div className="flex flex-col w-full gap-2">
+            <p className="text-gray-100 font-semibold text-[20px]">Nombre</p>
+            <input
+              placeholder="Nombre"
+              type="text"
+              className="flex h-10 w-full border-b-2 px-3 py-2 focus:outline-none"
+              {...register("nombre", { required: true })}
+            />
+            {errors.nombre && (
+              <span className="text-red-500">El nombre es requerido.</span>
+            )}
+          </div>
+
           <div className="flex flex-col w-full gap-2">
             <p className="text-gray-300 font-semibold text-[20px]">Email</p>
             <input
               placeholder="example@email.com"
               type="email"
               className="flex h-10 w-full border-b-2 px-3 py-2 focus:outline-none"
-              {...register("usuario", { required: true })}
+              {...register("correo", { required: true })}
             />
-            {errors.usuario && (
+            {errors.correo && (
               <span className="text-red-500">
                 El correo electronico es requerido.
               </span>
@@ -50,7 +76,9 @@ export default function Login() {
           </div>
 
           <div className="flex flex-col w-full gap-2">
-            <p className="text-gray-300 font-semibold text-[20px]">Contraseña</p>
+            <p className="text-gray-300 font-semibold text-[20px]">
+              Contraseña
+            </p>
             <label className="flex border-b-2">
               <input
                 placeholder="****************"
@@ -83,11 +111,16 @@ export default function Login() {
             )}
           </div>
           <div className="text-center">
-          <a href="./registrar" className=" text-slate-300 w-fit  hover:underline">No tienes cuenta? Registrate </a>
+            <a
+              href="./login"
+              className=" text-slate-300 w-fit  hover:underline"
+            >
+              Volver al inicio de sesión
+            </a>
           </div>
 
           <button className="bg-black text-slate-400 border border-slate-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
-            <span className="bg-slate-400 shadow-slate-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+            <span className="bg-slate-400 shadow-slate-400 absolute -top-[150%] left-0 inline-flex w-full h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
             Ingresar
           </button>
         </form>

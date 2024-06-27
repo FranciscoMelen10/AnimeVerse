@@ -1,8 +1,8 @@
-import AnimeItem from "@/components/AnimeItem";
-import { GetSearchAnime } from "@/api/anime";
-import Pagination from "@/components/Pagination";
-import NotFoundComponent from "@/components/NotFound";
-import Header from "@/components/Header";
+import AnimeItem from "../../../components/AnimeItem.jsx";
+import { GetSearchAnime } from "../../../api/anime.js";
+import Pagination from "../../../components/Pagination.jsx";
+import NotFoundComponent from "../../../components/NotFound.jsx";
+import Header from "../../../components/Header.jsx";
 
 export default async function SearchPage({ params }) {
   const { data, pagination } = await GetSearchAnime(params.search, params.id);

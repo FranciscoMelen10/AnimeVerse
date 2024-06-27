@@ -2,16 +2,15 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
-  "type": "",
   "scripts": {
     "dev": "next dev",
-    "dev1": "nodemon server/index.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.3",
+    "axios": "^1.7.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mssql": "^11.0.0",
