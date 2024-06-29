@@ -3,7 +3,7 @@ import sql from 'mssql'
 
 export const crearUsuario = async (req, res) => {
     // Datos del frontend al backend
-    console.log(req.body.params)
+    // console.log(req.body.params)
 
     // Cadena de conexión
     const pool = await getConnection();
@@ -29,12 +29,10 @@ export const crearUsuario = async (req, res) => {
             }
         */
 
-        console.log(respuesta);
-
         // Respuesta en json para el frontend
         const json =
         {
-            id: respuesta.recordset[0].id, // Obtener el id del ultimo registro
+            id_usuario: respuesta.recordset[0].id, // Obtener el id del ultimo registro
             nombre: req.body.params.nombre,
             correo: req.body.params.correo,
             contrasena: req.body.params.contrasena,
@@ -54,7 +52,7 @@ export const buscarUsuario = async (req, res) => {
     // console.log(req.query)
 
     // Cadena de conexión
-    const pool = await getConnection();
+    const pool = await getConnection();    
 
     try {
         // Consulta a la BD

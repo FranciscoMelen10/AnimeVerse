@@ -3,8 +3,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { buscarUsuario } from "../../controllers/index.controller";
+import { useRouter } from "next/navigation";
+import { agregarUsuario } from "../../local";
 
 export default function Login() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -16,8 +19,8 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       const response = await buscarUsuario(data);
-      
       if (response.length > 0) {
+        agregarUsuario(response[0])
         alert("Inicio de sesión existoso.");
         router.push("/");
         // Agregar usuario en las cookies

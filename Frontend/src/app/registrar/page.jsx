@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { crearUsuario } from "../../controllers/usuario.controller";
 import { useRouter } from "next/navigation";
+import { agregarUsuario } from "../../local";
 
 export default function Registar() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,9 +19,9 @@ export default function Registar() {
   const onSubmit = async (data) => {
     const response = await crearUsuario(data);
     if (response.id !== null) {
+      agregarUsuario(response)
       alert("Se creo correctamente");
       router.push("/");
-      // Agregar usuario en las cookies
     } else {
       alert(
         "Ya existe un usuario con ese correo electrónico. Intente con otro correo"
