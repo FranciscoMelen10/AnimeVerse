@@ -7,6 +7,7 @@ import Header from "../../../components/Header.jsx";
 import LoadingPage from "../../loading.jsx";
 import { useEffect, useState } from "react";
 import LayoutUser from "../../../Layout/LayoutUser.jsx";
+import NotFoundComponent from "../../../components/NotFound.jsx";
 
 export default function AnimeSection({ params }) {
   const [infoPage, setInfoPage] = useState(null);

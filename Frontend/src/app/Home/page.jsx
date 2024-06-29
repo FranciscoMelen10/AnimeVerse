@@ -1,33 +1,35 @@
 "use client"
-import AnimeItem from "../../../components/AnimeItem.jsx";
-import { GetSearchAnime } from "../../../api/anime.js";
-import Pagination from "../../../components/Pagination.jsx";
-import NotFoundComponent from "../../../components/NotFound.jsx";
-import Header from "../../../components/Header.jsx";
+import AnimeItem from "../../components/AnimeItem.jsx";
+import Pagination from "../../components/Pagination.jsx";
+import { GetPageAnime } from "../../api/anime.js";
+import NotFoundComponent from "../../components/NotFound.jsx";
+import Header from "../../components/Header.jsx";
 import { useEffect, useState } from "react";
-import LoadingPage from "../../loading.jsx";
-import LayoutUser from "../../../Layout/LayoutUser.jsx";
+import { obtenerUsuario } from "../../local/index.js";
+import LoadingPage from "../loading.jsx";
+import Link from "next/link.js";
+import LayoutUser from "../../Layout/LayoutUser.jsx";
 
-export default function SearchPage({ params }) {
+export default function Home() {
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSearchAnime = async () => {
+    const fetchAnimeData = async () => {
       try {
-        const { data, pagination } = await GetSearchAnime(params.search, params.id);
+        setIsLoading(true);
+        const { data, pagination } = await GetPageAnime(1);
         setData(data);
         setPagination(pagination);
       } catch (error) {
-        console.error("Error fetching search anime data:", error);
+        console.error("Error fetching anime data:", error);
       } finally {
         setIsLoading(false);
       }
     };
-
-    fetchSearchAnime();
-  }, [params.search, params.id]);
+    fetchAnimeData();
+  }, []);
 
   if (isLoading) {
     return <LoadingPage />;
@@ -35,11 +37,12 @@ export default function SearchPage({ params }) {
 
   return (
     <LayoutUser>
-      <Header searchValue={params.search} />
-
+      <Header />
       <div className="my-5 flex flex-wrap items-center justify-center gap-6 max-w-[1400px] px-5 min-h-screen">
         {
-          typeof (data) ? (
+          // Validation If the data isn't correct
+          Array.isArray(data) ? (
+            // Validation If the data has information to filter
             data.length !== 0 ? (
               data.map((info) => (
                 <AnimeItem
@@ -59,10 +62,12 @@ export default function SearchPage({ params }) {
         }
       </div>
       {
+        // Validation If the API has an error with the query
         typeof pagination === "object" && (
-          <Pagination pagination={pagination} url={`./${params.search}`} />
+          <Pagination pagination={pagination} />
         )
       }
     </LayoutUser>
   );
+
 }

@@ -21,7 +21,7 @@ export default function Registar() {
     if (response.id !== null) {
       agregarUsuario(response)
       alert("Se creo correctamente");
-      router.push("/");
+      router.push("/Home");
     } else {
       alert(
         "Ya existe un usuario con ese correo electrónico. Intente con otro correo"
@@ -113,7 +113,7 @@ export default function Registar() {
           </div>
           <div className="text-center">
             <a
-              href="./login"
+              href="/"
               className=" text-slate-300 w-fit  hover:underline"
             >
               Volver al inicio de sesión
