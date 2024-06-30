@@ -1,5 +1,15 @@
-import { buscarUsuario } from "./usuario.controller";
+import { buscarUsuario, crearUsuario } from "./usuario.controller";
 
-export{
-    buscarUsuario
-}
+import {
+  crearFavorito,
+  buscarFavoritos,
+  eliminarFavorito,
+} from "./favoritos.controller";
+
+export {
+  buscarUsuario,
+  crearUsuario,
+  crearFavorito,
+  buscarFavoritos,
+  eliminarFavorito,
+};

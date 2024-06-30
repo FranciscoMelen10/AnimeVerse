@@ -42,7 +42,7 @@ export const crearFavoritos = async (req, res) => {
 
 export const eliminarFavoritos = async (req, res) => {
     // Datos del frontend al backend
-    // console.log(req.body)
+    console.log(req.body.params)
 
     // Cadena de conexión
     const pool = await getConnection();
@@ -80,14 +80,14 @@ export const eliminarFavoritos = async (req, res) => {
 
 export const buscarFavoritos = async (req, res) => {
     // Datos del frontend al backend
-    // console.log(req.body)
+    console.log(req.query)
 
     // Cadena de conexión
     const pool = await getConnection();
 
     try {
         // Consulta a la BD
-        const respuesta = await pool.request().input('id_usuario', sql.Int, req.body.id_usuario).query('SELECT * FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario')
+        const respuesta = await pool.request().input('id_usuario', sql.Int, req.query.id_usuario).query('SELECT * FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario')
 
         /* 
             Si todo estaba bien, la respuesta sera:

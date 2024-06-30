@@ -25,7 +25,7 @@ export default function LayoutUser({ children }) {
     return (
       <div className="flex items-center justify-center flex-col min-h-screen gap-5">
         <h1 className="text-xl font-bold">Error al entrar al menú, por favor inicie sesión.</h1>
-        <Link href="/login" className="text-slate-300 w-fit hover:underline">Inicio de sesión</Link>
+        <Link href="/" className="text-slate-300 w-fit hover:underline">Inicio de sesión</Link>
       </div>
     );
   }
