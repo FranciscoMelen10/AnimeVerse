@@ -9,6 +9,7 @@ import { obtenerUsuario } from "../../local/index.js";
 import LoadingPage from "../loading.jsx";
 import Link from "next/link.js";
 import LayoutUser from "../../Layout/LayoutUser.jsx";
+import Button from "../../components/Button.jsx";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -67,6 +68,9 @@ export default function Home() {
           <Pagination pagination={pagination} />
         )
       }
+      <div className="fixed bottom-0 right-0 p-6">
+        <Button/>
+      </div>
     </LayoutUser>
   );
 

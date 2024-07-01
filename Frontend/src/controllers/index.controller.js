@@ -4,6 +4,7 @@ import {
   crearFavorito,
   buscarFavoritos,
   eliminarFavorito,
+  existeFavorito
 } from "./favoritos.controller";
 
 export {
@@ -12,4 +13,5 @@ export {
   crearFavorito,
   buscarFavoritos,
   eliminarFavorito,
+  existeFavorito
 };

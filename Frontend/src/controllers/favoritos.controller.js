@@ -2,12 +2,30 @@ import axios from "axios";
 
 export const buscarFavoritos = async (id_usuario) => {
   try {
-    console.log(id_usuario)
+    console.log(id_usuario);
     const response = await axios.get(process.env.NEXT_PUBLIC_ENV_FAVORITOS, {
       params: {
         id_usuario: id_usuario,
       },
     });
+    return response.data;
+  } catch (error) {
+    console.log("BuscarUsuario: ", error);
+  }
+};
+
+export const existeFavorito = async (id_usuario, id_anime) => {
+  try {
+    // console.log(id_usuario)
+    // console.log(`${process.env.NEXT_PUBLIC_ENV_FAVORITOS}/${id_anime}`)
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_ENV_FAVORITOS}/${id_anime}`,
+      {
+        params: {
+          id_usuario: id_usuario,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.log("BuscarUsuario: ", error);

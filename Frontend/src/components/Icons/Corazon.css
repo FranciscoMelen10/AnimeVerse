@@ -1,0 +1,63 @@
+.corazon input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    float: left;
+  }
+  
+  .corazon {
+    cursor: pointer;
+    user-select: none;
+    transition: 100ms;
+  }
+  
+  .checkmark {
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    transition: 100ms;
+    animation: dislike_effect 400ms ease;
+  }
+  
+  .corazon input:checked ~ .checkmark path {
+    fill: #FF5353;
+    stroke-width: 0;
+  }
+  
+  .corazon input:checked ~ .checkmark {
+    animation: like_effect 400ms ease;
+  }
+  
+  .corazon:hover {
+    transform: scale(1);
+  }
+  
+  @keyframes like_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes dislike_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }

@@ -1,5 +1,9 @@
-"use client"
-import { GetAnime, GetGalleryAnime, GetMainCharactersAnime } from "../../../api/anime.js";
+"use client";
+import {
+  GetAnime,
+  GetGalleryAnime,
+  GetMainCharactersAnime,
+} from "../../../api/anime.js";
 import Image from "next/image";
 import Video from "../../../components/Video.jsx";
 import CharacterItem from "../../../components/CharacterItem.jsx";
@@ -8,6 +12,8 @@ import LoadingPage from "../../loading.jsx";
 import { useEffect, useState } from "react";
 import LayoutUser from "../../../Layout/LayoutUser.jsx";
 import NotFoundComponent from "../../../components/NotFound.jsx";
+import Button from "../../../components/Button.jsx";
+import Corazon from "../../../components/Icons/Corazon.jsx";
 
 export default function AnimeSection({ params }) {
   const [infoPage, setInfoPage] = useState(null);
@@ -68,8 +74,8 @@ export default function AnimeSection({ params }) {
             height={500}
           />
           <h1 className="font-semibold text-5xl pb-6 max-md:pb-2">{title}</h1>
-          <section className="flex justify-between pb-4 max-md:pb-2">
-            <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
+          <section className="flex justify-between pb-4 max-md:pb-2 relative">
+            <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center ">
               {typeof score === "number" && (
                 <div className="flex justify-center items-center gap-1">
                   <Image
@@ -109,6 +115,12 @@ export default function AnimeSection({ params }) {
                   </h4>
                 </div>
               )}
+
+              {
+                <div className="flex justify-end items-center absolute right-0">
+                  <Corazon id_anime={params.id}></Corazon>
+                </div>
+              }
             </article>
           </section>
           <section className="flex flex-wrap max-md:justify-center gap-2 mb-5 max-md:mb-2">
@@ -178,6 +190,9 @@ export default function AnimeSection({ params }) {
             </picture>
           </>
         )}
+      </div>
+      <div className="fixed bottom-0 right-0 p-6">
+        <Button />
       </div>
     </LayoutUser>
   );

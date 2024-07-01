@@ -1,4 +1,4 @@
-import { crearFavoritos, buscarFavoritos, eliminarFavoritos } from "./favorito.controller.js";
+import { crearFavoritos, buscarFavoritos, eliminarFavoritos, existeFavorito } from "./favorito.controller.js";
 import { crearUsuario, buscarUsuario } from "./usuario.controller.js";
 
 /*
@@ -18,5 +18,6 @@ export {
     buscarUsuario,
     crearFavoritos,
     buscarFavoritos,
-    eliminarFavoritos
+    eliminarFavoritos,
+    existeFavorito
 }

@@ -1,19 +1,24 @@
-import { getConnection } from "../conexion.js"
-import sql from 'mssql'
+import { getConnection } from "../conexion.js";
+import sql from "mssql";
 
 export const crearFavoritos = async (req, res) => {
-    // Datos del frontend al backend
-    // console.log(req.body)
+  // Datos del frontend al backend
+//   console.log(req.body.params);
 
-    // Cadena de conexión
-    const pool = await getConnection();
+  // Cadena de conexión
+  const pool = await getConnection();
 
-    try {
-        // Consulta a la BD
-        const respuesta = await pool.request().input('id_usuario', sql.Int, req.body.id_usuario).input('id_anime', sql.Int, req.body.id_anime).query('IF NOT EXISTS(SELECT 1 FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario AND id_anime = @id_anime) BEGIN INSERT INTO AnimeVerse.dbo.Favoritos(id_usuario, id_anime) VALUES ( @id_usuario , @id_anime) END; SELECT SCOPE_IDENTITY() AS id;')
+  try {
+    // Consulta a la BD
+    const respuesta = await pool
+      .request()
+      .input("id_usuario", sql.Int, req.body.params.id_usuario)
+      .input("id_anime", sql.Int, req.body.params.id_anime)
+      .query(
+        "IF NOT EXISTS(SELECT 1 FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario AND id_anime = @id_anime) BEGIN INSERT INTO AnimeVerse.dbo.Favoritos(id_usuario, id_anime) VALUES ( @id_usuario , @id_anime) END; SELECT SCOPE_IDENTITY() AS id;"
+      );
 
-
-        /*
+    /*
         Si todo esta bien, enviara esta respuesta:
         {
             recordsets: [ [ [Object] ] ],
@@ -30,28 +35,34 @@ export const crearFavoritos = async (req, res) => {
             rowsAffected: [ 0 ]
         }
         */
+    // console.log(respuesta);
 
-        res.json({ respuesta: respuesta.recordset[0].id ? true : false })
-
-    } catch (error) {
-        console.log("crearUsuario: ", error)
-        res.status(500).send('Error en el servidor');
-    }
-
-}
+    // res.json({ respuesta: respuesta.recordset[0].id ? true : false });
+  } catch (error) {
+    console.log("crearUsuario: ", error);
+    res.status(500).send("Error en el servidor");
+  }
+};
 
 export const eliminarFavoritos = async (req, res) => {
-    // Datos del frontend al backend
-    console.log(req.body.params)
+  // Datos del frontend al backend
+    // console.log(req.query.id_usuario);
+    // console.log(req.query.id_anime);
 
-    // Cadena de conexión
-    const pool = await getConnection();
+  // Cadena de conexión
+  const pool = await getConnection();
 
-    try {
-        // Consulta a la BD
-        const respuesta = await pool.request().input('id_usuario', sql.Int, req.body.id_usuario).input('id_anime', sql.Int, req.body.id_anime).query('DELETE FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario AND id_anime = @id_anime')
+  try {
+    // Consulta a la BD
+    const respuesta = await pool
+      .request()
+      .input("id_usuario", sql.Int, req.query.id_usuario)
+      .input("id_anime", sql.Int, req.query.id_anime)
+      .query(
+        "DELETE FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario AND id_anime = @id_anime"
+      );
 
-        /*
+    /*
             Si todo esta bien, enviara esta respuesta:
             {
                 recordsets: [],
@@ -69,27 +80,30 @@ export const eliminarFavoritos = async (req, res) => {
             }
         */
 
-        res.json({ respuesta: respuesta.recordset[0].id ? true : false })
-
-    } catch (error) {
-        console.log("eliminarFavoritos: ", error)
-        res.status(500).send('Error en el servidor');
-    }
-
-}
+    res.json(respuesta);
+  } catch (error) {
+    console.log("eliminarFavoritos: ", error);
+    res.status(500).send("Error en el servidor");
+  }
+};
 
 export const buscarFavoritos = async (req, res) => {
-    // Datos del frontend al backend
-    console.log(req.query)
+  // Datos del frontend al backend
+//   console.log(req.query);
 
-    // Cadena de conexión
-    const pool = await getConnection();
+  // Cadena de conexión
+  const pool = await getConnection();
 
-    try {
-        // Consulta a la BD
-        const respuesta = await pool.request().input('id_usuario', sql.Int, req.query.id_usuario).query('SELECT * FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario')
+  try {
+    // Consulta a la BD
+    const respuesta = await pool
+      .request()
+      .input("id_usuario", sql.Int, req.query.id_usuario)
+      .query(
+        "SELECT * FROM AnimeVerse.dbo.Favoritos WHERE id_usuario = @id_usuario"
+      );
 
-        /* 
+    /* 
             Si todo estaba bien, la respuesta sera:
             {
                 recordsets: [ [ [Object], [Object], [Object] ] ],
@@ -115,12 +129,36 @@ export const buscarFavoritos = async (req, res) => {
             }
         */
 
-        console.log(respuesta);
+    // console.log(respuesta);
 
-        res.json(respuesta.recordset)
+    res.json(respuesta.recordset);
+  } catch (error) {
+    console.log("buscarFavoritos: ", error);
+    res.status(500).send("Error en el servidor");
+  }
+};
 
-    } catch (error) {
-        console.log("buscarFavoritos: ", error)
-        res.status(500).send('Error en el servidor');
-    }
-}
+export const existeFavorito = async (req, res) => {
+  // Datos del frontend al backend
+
+  // Cadena de conexión
+  const pool = await getConnection();
+
+  try {
+    // Consulta a la BD
+    const respuesta = await pool
+      .request()
+      .input("id_anime", sql.Int, req.params.id)
+      .input("id_usuario", sql.Int, req.query.id_usuario)
+      .query(
+        "SELECT * FROM AnimeVerse.dbo.Favoritos WHERE id_anime = @id_anime AND id_usuario = @id_usuario"
+      );
+
+    // console.log(respuesta.recordset.length);
+
+    res.json(respuesta.recordset);
+  } catch (error) {
+    console.log("existeFavorito: ", error);
+    res.status(500).send("Error en el servidor");
+  }
+};
