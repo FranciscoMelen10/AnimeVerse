@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function CharacterItem({ img, name, favorites, url }) {
+function CharacterItem({ img, name, favorites, url, time }) {
   return (
-    <div className="flex justify-start items-start flex-col w-[300px] gap-2">
+    <div className="flex justify-start items-start flex-col w-[300px] gap-2" data-aos="fade" data-aos-delay={time * 300} data-aos-easing="ease-in-out">
       <Image
         src={`${img}`}
         alt={`Imagen de ${name}`}

@@ -31,11 +31,13 @@ export default async function AnimeSection({ params }) {
   //   console.log(year)
   //   console.log(genres)
 
+  const time = 300;
+
   return (
     <>
-    <Header/>
+      <Header />
       <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full">
-        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center max-md:gap-2">
+        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center max-md:gap-2" data-aos="fade-up" data-aos-easing="ease-in-out">
           <Image
             src={images.jpg.image_url}
             alt={`Imagen de ${title}`}
@@ -48,7 +50,7 @@ export default async function AnimeSection({ params }) {
             <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
               {/* Validation score */}
               {typeof score == "number" ? (
-                <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out">
                   <Image
                     src="/start.svg"
                     alt="Estrella"
@@ -63,7 +65,7 @@ export default async function AnimeSection({ params }) {
 
               {/* Validation source */}
               {typeof source == "string" ? (
-                <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 2} data-aos-easing="ease-in-out">
                   <Image src="/book.svg" alt="Book" width={22} height={22} />
                   <p className="">{source}</p>
                 </div>
@@ -73,7 +75,7 @@ export default async function AnimeSection({ params }) {
 
               {/* Validation source */}
               {typeof favorites == "number" ? (
-                <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out">
                   <Image src="/heart.svg" alt="Heart" width={22} height={22} />
                   <p className="">{favorites}</p>
                 </div>
@@ -83,7 +85,7 @@ export default async function AnimeSection({ params }) {
 
               {/* Validation source */}
               {typeof aired.string == "string" ? (
-                <div className="flex justify-center items-center gap-1">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 4} data-aos-easing="ease-in-out">
                   <Image
                     src="/calendar.svg"
                     alt="Book"
@@ -99,10 +101,11 @@ export default async function AnimeSection({ params }) {
               )}
             </article>
           </section>
-          <section className="flex flex-wrap max-md:justify-center gap-2 mb-5 max-md:mb-2">
-            {genres.map((info) => {
+          <section className="flex flex-wrap max-md:justify-center gap-2 mb-5 max-md:mb-2" >
+            {genres.map((info, index) => {
               return (
                 <p
+                  data-aos="fade" data-aos-delay={index * 200} data-aos-easing="ease-in-out"
                   className=" border px-2 rounded-full text-[15px] text-color_200 font-light"
                   key={info.mal_id}
                 >
@@ -131,8 +134,8 @@ export default async function AnimeSection({ params }) {
         {
           /* Validation */
           typeof trailer.embed_url == "string" ? (
-            <div className="my-6 flex items-center justify-center flex-col w-full p-4">
-              <h1 className="font-semibold text-4xl pb-6 text-color_100 text-center underline">{`${title}'s trailer`}</h1>
+            <div className="my-14 flex items-center justify-center flex-col w-full p-4" data-aos="fade" data-aos-easing="ease-in-out">
+              <h1 className="font-semibold text-4xl pb-6 text-color_100 text-center">{`${title}'s trailer`}</h1>
               <Video video={trailer.embed_url} />
             </div>
           ) : (
@@ -141,10 +144,10 @@ export default async function AnimeSection({ params }) {
         }
 
         {infoCharacters.length !== 0 ? (
-          <>
-            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center underline">{`Main characters of ${title}`}</h1>
+          <div className="my-14" data-aos="fade" data-aos-easing="ease-in-out">
+            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center">{`Main characters of ${title}`}</h1>
             <div className="flex items-center justify-center flex-wrap mt-10 gap-4 gap-y-6">
-              {infoCharacters.map((info) => {
+              {infoCharacters.map((info, index) => {
                 return (
                   <CharacterItem
                     key={info.mal_id}
@@ -156,29 +159,30 @@ export default async function AnimeSection({ params }) {
                 );
               })}
             </div>
-          </>
+          </div>
         ) : (
           ""
         )}
 
         {infoGallery.length !== 0 ? (
-          <>
-            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center underline">{`${title}'s Galery`}</h1>
-            <picture className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
+          <div data-aos="fade" data-aos-easing="ease-in-out">
+            <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center">{`${title}'s Galery`}</h1>
+            <div className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
               {infoGallery.map((info, index) => {
                 return (
-                  <Image
-                    src={info.jpg.image_url}
-                    key={index}
-                    alt={`Imagen de ${title}`}
-                    className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"
-                    width={300}
-                    height={400}
-                  />
+                  <picture key={index} data-aos="fade" data-aos-easing="ease-in-out">
+                    <Image
+                      src={info.jpg.image_url}
+                      alt={`Imagen de ${title}`}
+                      className="rounded-2xl object-cover float-right ml-4 mb-2 h-[400px] w-[300px]"
+                      width={300}
+                      height={400}
+                    />
+                  </picture>
                 );
               })}
-            </picture>
-          </>
+            </div>
+          </div>
         ) : (
           ""
         )}
