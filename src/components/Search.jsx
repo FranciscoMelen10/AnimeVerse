@@ -1,41 +1,43 @@
 "use client"
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-function Search({ placeholder, searchValue = "" }) {
+function Search({ placeholder, searchValue = "", type = "" }) {
+  const navigation = useRouter()
   const [inputValue, setInputValue] = useState(searchValue.replace(/%20/g, " "));
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value); 
+    setInputValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-    window.location.href = `/search/${inputValue}`
+    navigation.push(`/${type}/search/${inputValue}`)
   };
 
   return (
     <form
-      className="flex justify-center items-center py-1 px-2 border-black text-color_100 bg-[#17191A] rounded-md gap-2"
+      className="flex  items-center py-2 px-2 mt-5 mx-10 border-black text-color_100 bg-[#17191A] rounded-md gap-2 "
       onSubmit={handleSubmit}
     >
-      <input
-        placeholder={placeholder}
-        className="text-sm focus:outline-none bg-[#17191A]"
-        name="search"
-        value={inputValue} 
-        onChange={handleInputChange} 
-      />
       <button className="size-auto" type="submit">
         <Image
           src="/search.svg"
           alt="Search"
-          width={15}
-          height={15}
+          width={20}
+          height={20}
           loading="lazy"
           className="bg-[#17191A]"
         />
       </button>
+      <input
+        placeholder={placeholder}
+        className="text-sm focus:outline-none bg-[#17191A] w-full"
+        name="search"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
     </form>
   );
 }

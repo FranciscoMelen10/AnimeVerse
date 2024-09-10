@@ -22,22 +22,13 @@ export default async function AnimeSection({ params }) {
     favorites,
   } = infoPage;
 
-  //   console.log(images)
-  //   console.log(trailer)
-  // console.log(source)
-  // console.log(title)
-  // console.log(score)
-  //   console.log(synopsis)
-  //   console.log(year)
-  //   console.log(genres)
-
   const time = 300;
 
   return (
     <>
       <Header />
-      <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full">
-        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center max-md:gap-2" data-aos="fade-up" data-aos-easing="ease-in-out">
+      <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full pt-[70px] max-md:pt-[110px]">
+        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-2" data-aos="fade-up" data-aos-easing="ease-in-out">
           <Image
             src={images.jpg.image_url}
             alt={`Imagen de ${title}`}
@@ -45,7 +36,7 @@ export default async function AnimeSection({ params }) {
             width={400}
             height={500}
           />
-          <h1 className="font-semibold text-5xl pb-6 max-md:pb-2">{title}</h1>
+          <h1 className="font-semibold text-5xl pb-6 max-md:pb-2 max-md:text-center">{title}</h1>
           <section className="flex justify-between pb-4 max-md:pb-2">
             <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
               {/* Validation score */}
@@ -147,14 +138,15 @@ export default async function AnimeSection({ params }) {
           <div className="my-14" data-aos="fade" data-aos-easing="ease-in-out">
             <h1 className="font-semibold text-4xl pt-20 text-color_100 text-center">{`Main characters of ${title}`}</h1>
             <div className="flex items-center justify-center flex-wrap mt-10 gap-4 gap-y-6">
-              {infoCharacters.map((info, index) => {
+              {infoCharacters.map((info) => {
                 return (
                   <CharacterItem
                     key={info.mal_id}
+                    id={info.character.mal_id}
                     name={info.character.name}
                     img={info.character.images.jpg.image_url}
                     favorites={info.favorites}
-                    url={info.character.url}
+                    url="character"
                   />
                 );
               })}

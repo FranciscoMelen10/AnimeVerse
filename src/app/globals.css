@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   background: #050505;
+}
+
+.facebook:hover svg {
+  fill: #3b5998;
+}
+
+.instagram:hover svg {
+  fill: #e4405f;
+}
+
+.github:hover svg {
+  fill: #a200ff;
 }
