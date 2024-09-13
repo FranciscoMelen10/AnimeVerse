@@ -4,7 +4,7 @@ import Link from "next/link";
 function CharacterItem({ img, name, id, favorites, url, kanji }) {
     return (
         <Link
-            className="flex justify-start items-start flex-col min-h-[550px] w-[300px] gap-2 hover:scale-95 transition-all"
+            className="flex justify-start items-start flex-col min-h-[500px] w-[300px] gap-2 hover:scale-95 transition-all"
             href={`/${url}/description/${id}`}
         >
             <div data-aos="fade-up" data-aos-easing="ease-in">

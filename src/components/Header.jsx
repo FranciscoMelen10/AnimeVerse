@@ -13,7 +13,6 @@ function Header() {
           <Link href="/anime" className="text-lg hover:cursor-pointer hover:underline">Anime</Link>
           <Link href="/manga" className="text-lg hover:cursor-pointer hover:underline">Manga</Link>
           <Link href="/character" className="text-lg hover:cursor-pointer hover:underline">Characters</Link>
-          <Link href="/" className="text-lg hover:cursor-pointer hover:underline">News</Link>
         </section>
       </nav>
     </header>

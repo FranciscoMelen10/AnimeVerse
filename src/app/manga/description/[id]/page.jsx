@@ -38,7 +38,7 @@ export default async function MangaSection({ params }) {
             <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
               {/* Validation score */}
               {typeof score == "number" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
                   <Image
                     src="/start.svg"
                     alt="Estrella"
@@ -53,7 +53,7 @@ export default async function MangaSection({ params }) {
 
               {/* Validation source */}
               {typeof source == "string" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 2} data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
                   <Image src="/book.svg" alt="Book" width={22} height={22} />
                   <p className="">{source}</p>
                 </div>
@@ -63,7 +63,7 @@ export default async function MangaSection({ params }) {
 
               {/* Validation source */}
               {typeof favorites == "number" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
                   <Image src="/heart.svg" alt="Heart" width={22} height={22} />
                   <p className="">{favorites}</p>
                 </div>

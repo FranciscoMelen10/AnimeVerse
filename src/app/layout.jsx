@@ -1,14 +1,8 @@
-// layout.js
-"use client";
-
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
-import { metadata } from "@/metadata"; // Asegúrate de que esta ruta sea correcta
+
 import Head from "next/head"; // Importa el componente Head
 
 const poppins = Poppins({
@@ -17,11 +11,16 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+export const metadata = {
+  title: "AnimeVerse",
+  description:
+    "Welcome to the website made by Francisco De Jesús Mélendez Simplina! This Website is dedicated for anime lovers.",
+  icons: {
+    icon: "/Logo.ico",
+  },
+};
 
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>

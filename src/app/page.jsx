@@ -1,10 +1,16 @@
+"use client"
+import AOS from "aos";
 import Link from "next/link";
-import hunter from "../../public/Backgrounds/hunterxhunter.jpg";
 import Header from "@/components/Header";
 import Image from "next/image";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function Home() {
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const sections = [
     {
       title: "Explore the Anime Universe",
@@ -28,16 +34,8 @@ export default function Home() {
         "Explore the rich and diverse characters that make the anime and manga worlds so captivating.",
       label: "Characters",
       linkText: "Explore Characters",
-      url: ""
-    },
-    {
-      title: "Stay active with the Latest Anime News",
-      description:
-        "Keep informed about the latest developments in the anime and manga industries with our news section.",
-      label: "News",
-      linkText: "Explore News",
-      url: ""
-    },
+      url: "/character"
+    }
   ]
 
   return (
@@ -57,7 +55,7 @@ export default function Home() {
             </section>
           </div>
 
-          <div className="container grid gap-8 px-4 md:px-6 lg:grid-cols-2">
+          <div className="container grid gap-8 px-4 md:px-6 lg:grid-cols-2 max xl:grid-cols-3">
 
             {/* Sections */}
             {sections.map(({ title, description, label, linkText, url }) => (

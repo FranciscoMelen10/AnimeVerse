@@ -18,7 +18,7 @@ function Search({ placeholder, searchValue = "", type = "" }) {
 
   return (
     <form
-      className="flex  items-center py-2 px-2 mt-5 mx-10 border-black text-color_100 bg-[#17191A] rounded-md gap-2 "
+      className="flex items-center py-2 px-2 mt-5 mx-10 border-black text-color_100 bg-[#17191A] min-w-[300px] rounded-md gap-2 "
       onSubmit={handleSubmit}
     >
       <button className="size-auto" type="submit">
