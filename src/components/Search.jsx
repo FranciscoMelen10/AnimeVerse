@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useTransitionRouter } from 'next-view-transitions'
 
 function Search({ placeholder, searchValue = "", type = "" }) {
-  const navigation = useRouter()
+  const navigation = useTransitionRouter()
   const [inputValue, setInputValue] = useState(searchValue.replace(/%20/g, " "));
 
   const handleInputChange = (event) => {

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 
 function Pagination({ pagination, url = "" }) {
   const { last_visible_page, current_page } = pagination;

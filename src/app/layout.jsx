@@ -2,8 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
-
-import Head from "next/head"; // Importa el componente Head
+import { ViewTransitions } from 'next-view-transitions'
 
 const poppins = Poppins({
   style: ["normal"],
@@ -22,20 +21,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <Head>
-        {/* Utiliza la metadata importada */}
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="icon" href={metadata.icons.icon} />
-      </Head>
-      <GoogleTagManager gtmId="G-EBYLZNFLTS" />
-      <body className={poppins.className}>
-        <main className="flex flex-col justify-center items-center text-color_100">
-          {children}
-          <Footer />
-        </main>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <GoogleTagManager gtmId="G-EBYLZNFLTS" />
+        <body className={poppins.className}>
+          <main className="flex flex-col justify-center items-center text-color_100">
+            {children}
+            <Footer />
+          </main>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

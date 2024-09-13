@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 
 function AnimeItem({ img = "", title = "", id = "", score = "", favorites = "", url = "", time = 0 }) {
   return (
     <Link
-      className="flex justify-start items-start flex-col min-h-[500px] w-[300px] gap-2 hover:scale-95 transition-all"
+      className="flex justify-start items-start flex-col min-h-[500px] w-[300px] gap-2 hover:scale-90 transition-all "
       href={`/${url}/description/${id}`}
     >
       <div className="scale-50" data-aos="fade-up" data-aos-easing="ease-in">
