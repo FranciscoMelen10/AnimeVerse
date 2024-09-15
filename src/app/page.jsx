@@ -1,16 +1,8 @@
-"use client"
-import AOS from "aos";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Image from "next/image";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 export default function Home() {
-
-  useEffect(() => {
-    AOS.init();
-  }, []);
   const sections = [
     {
       title: "Explore the Anime Universe",
@@ -36,13 +28,13 @@ export default function Home() {
       linkText: "Explore Characters",
       url: "/character"
     }
-  ]
+  ];
 
   return (
     <>
       <Header />
-      <div className="bg-background transit text-foreground flex flex-col ">
-        <main className="flex items-center flex-col">
+      <div className="bg-background transit text-foreground flex flex-col overflow-hidden"> {/* Add overflow-hidden */}
+        <main className="flex items-center flex-col overflow-hidden"> {/* Add overflow-hidden */}
           <div className="w-screen bg-cover h-screen flex justify-center items-center bg-[url('../../public/Backgrounds/hunterxhunter.jpg')] " data-aos="fade-up" data-aos-easing="ease-in">
             <div className="absolute inset-0 bg-black opacity-80"></div>
 
@@ -55,29 +47,27 @@ export default function Home() {
             </section>
           </div>
 
-          <div className="container grid gap-8 px-4 md:px-6 lg:grid-cols-2 max xl:grid-cols-3">
+          <div className="container grid gap-8 px-4 md:px-6 lg:grid-cols-2 max xl:grid-cols-3 overflow-hidden"> {/* Add overflow-hidden */}
 
             {/* Sections */}
             {sections.map(({ title, description, label, linkText, url }) => (
               <section key={title} className="w-full py-12 md:py-24 lg:py-32" data-aos="fade-up" data-aos-easing="ease-in">
                 <div className="space-y-4">
-                  <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">{title}</h1>
-                  <span className="inline-block rounded-lg bg-muted px-3 py-1 text-sm bg-color_900">{label}</span>
+                  <h1 className="text-3xl font-bold sm:text-4xl md:text-3xl">{title}</h1>
+                  <span className="inline-block rounded-lg bg-muted px-3 py-1 text-sm bg-violet-950">{label}</span>
                   <p>
                     {description}
                   </p>
                   <Link
                     href={url}
-                    className="bg-color_950 inline-flex rounded-md bg-primary px-4 py-2 text-sm border-[1px] hover:bg-white hover:text-color_950 transition-colors"
+                    className=" inline-flex rounded-md bg-primary px-4 py-2 text-sm border-[1px] hover:bg-white hover:text-color_950 transition-colors"
                   >
                     {linkText}
                   </Link>
                 </div>
-
               </section>
             ))}
           </div>
-
         </main>
       </div>
     </>

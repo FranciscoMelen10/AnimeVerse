@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 
 function CharacterItem({ img, name, favorites, url, id }) {
   return (

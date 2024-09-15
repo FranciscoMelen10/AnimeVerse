@@ -19,7 +19,7 @@ function CharacterItem({ img, name, id, favorites, url, kanji }) {
                 <h1 className=" text-color_100 font-semibold text-[20px] bg-transparent text-ellipsis w-[300px] whitespace-nowrap overflow-hidden">
                     {name}
                 </h1>
-                <section className="flex justify-between items-center " data-aos="fade" data-aos-easing="ease-in-out">
+                <section className="flex justify-between items-center " data-aos="fade" data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
                     <h2 className="text-color_100  text-[15px] bg-transparent text-ellipsis  whitespace-nowrap overflow-hidden">{kanji}</h2>
                     {/* Validation favorites */}
                     {typeof favorites == "number" ? (

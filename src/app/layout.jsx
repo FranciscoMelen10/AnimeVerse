@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { ViewTransitions } from 'next-view-transitions'
+import AOSLayout from "@/components/AOSLayout";
 
 const poppins = Poppins({
   style: ["normal"],
@@ -25,10 +26,10 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <GoogleTagManager gtmId="G-EBYLZNFLTS" />
         <body className={poppins.className}>
-          <main className="flex flex-col justify-center items-center text-color_100">
+          <AOSLayout>
             {children}
             <Footer />
-          </main>
+          </AOSLayout>
         </body>
       </html>
     </ViewTransitions>

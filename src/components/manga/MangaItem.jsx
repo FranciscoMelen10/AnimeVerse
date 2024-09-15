@@ -12,7 +12,7 @@ function MangaItem({ img, title, id, score, favorites, url, time }) {
                     src={`${img}`}
                     alt={`Imagen de ${title}`}
                     loading="lazy"
-                    className="rounded-2xl object-cover h-[400px]"
+                    className="rounded-2xl h-[400px]"
                     width={300}
                     height={400}
                 />
@@ -22,7 +22,7 @@ function MangaItem({ img, title, id, score, favorites, url, time }) {
                 <section className="flex justify-between w-full">
                     {/* Validation score */}
                     {typeof score == "number" ? (
-                        <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out">
+                        <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
                             <Image
                                 src="/start.svg"
                                 alt="Estrella"
@@ -37,7 +37,7 @@ function MangaItem({ img, title, id, score, favorites, url, time }) {
 
                     {/* Validation source */}
                     {typeof favorites == "number" ? (
-                        <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out">
+                        <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
                             <Image src="/heart.svg" alt="Heart" width={30} height={30} />
                             <p className="">{favorites}</p>
                         </div>

@@ -6,8 +6,15 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background: #050505;
+  background: #010307;
 }
+
+html, body {
+  overflow-x: hidden;
+  background: #0A0E12;
+
+}
+
 
 .facebook:hover svg {
   fill: #3b5998;
@@ -20,3 +27,9 @@
 .github:hover svg {
   fill: #a200ff;
 }
+
+/* styles/globals.css */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
