@@ -2,7 +2,7 @@ import { Link } from 'next-view-transitions'
 
 function Footer() {
   return (
-    <footer className="flex justify-between w-full max-w-[1000px] gap-4 p-6 font-medium text-color_100 mt-5 text-[20px] max-md:flex-col-reverse max-md:items-center max-md:text-center">
+    <footer className="flex justify-between w-full max-w-[1000px] gap-4 p-6 font-medium text-color_100 mt-5 text-[20px] max-md:flex-col-reverse max-md:items-center max-md:text-center -z-10">
       <h1 className="text-color_100 text-[16px]">
         © Francisco De Jesús Meléndez Simplina 2024, All Rights Reserved
       </h1>

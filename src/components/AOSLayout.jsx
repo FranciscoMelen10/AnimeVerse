@@ -11,7 +11,7 @@ export default function AOSLayout({ children }) {
       }, []);
 
     return(
-        <main className="flex flex-col justify-center items-center text-color_100 ">
+        <main className="flex flex-col justify-center items-center text-color_100 min-h-screen">
             {children}
         </main>
     )
