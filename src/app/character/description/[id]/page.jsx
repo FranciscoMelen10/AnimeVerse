@@ -1,13 +1,11 @@
 import { GetCharacter } from "@/api/characters";
 import Image from "next/image";
-import CharacterItem from "@/components/CharacterItem";
 import Header from "@/components/Header";
 import VoicesAutorsItem from "@/components/character/VoicesAutorsItem";
 import AnimeItem from "@/components/anime/AnimeItem";
 
 export default async function CharacterSection({ params }) {
   const infoPage = await GetCharacter({ id: params.id });
-
 
   const {
     images,
@@ -16,7 +14,6 @@ export default async function CharacterSection({ params }) {
     about,
     favorites,
     anime,
-    manga,
     voices
   } = infoPage;
 
@@ -24,7 +21,7 @@ export default async function CharacterSection({ params }) {
     <>
       <Header />
       <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full pt-[70px] max-md:pt-[110px]">
-        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-2" data-aos="fade-up" data-aos-easing="ease-in-out">
+        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-2" >
           <Image
             src={images.jpg.image_url}
             alt={`Imagen de ${name}`}
@@ -57,8 +54,8 @@ export default async function CharacterSection({ params }) {
           <section className="min-h-[400px] max-md:min-h-full">
             {typeof about == "string" ? (
               <>
-                <p className="text-color_300 text-[18px] leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
-                  {about}
+                <p className="text-color_300 text-[16px] leading-6">
+                {about}
                 </p>
               </>
             ) : (
@@ -73,7 +70,7 @@ export default async function CharacterSection({ params }) {
               {voices.map((info) => {
                 return (
                   <VoicesAutorsItem
-                    key={info.mal_id}
+                    key={info.person.mal_id}
                     name={info.person.name}
                     img={info.person.images.jpg.image_url}
                     language={info.language}

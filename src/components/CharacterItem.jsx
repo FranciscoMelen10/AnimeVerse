@@ -7,7 +7,7 @@ function CharacterItem({ img, name, favorites, url, id }) {
       href={`/${url}/description/${id}`}
       className="flex justify-start items-start flex-col w-[300px] gap-2 " data-aos="fade" data-aos-easing="ease-in-out"
     >
-      <div className="hover:scale-90 transition-all">
+      <div className="hover:scale-105 transition-all bg-transparent">
         <Image
           src={`${img}`}
           alt={`Imagen de ${name}`}

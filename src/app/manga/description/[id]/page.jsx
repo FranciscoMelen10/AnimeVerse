@@ -19,13 +19,11 @@ export default async function MangaSection({ params }) {
     favorites,
   } = infoPage;
 
-  const time = 300;
-
   return (
     <>
       <Header />
       <div className="max-w-[1300px] my-5 p-4 min-w-[1300px] max-xl:min-w-full pt-[70px] max-md:pt-[110px]">
-        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-2" data-aos="fade-up" data-aos-easing="ease-in-out">
+        <div className="max-md:flex max-md:flex-col max-md:justify-center max-md:items-center max-md:gap-2">
           <Image
             src={images.jpg.image_url}
             alt={`Imagen de ${title}`}
@@ -38,7 +36,7 @@ export default async function MangaSection({ params }) {
             <article className="flex items-center flex-wrap gap-4 text-[18px] max-md:justify-center">
               {/* Validation score */}
               {typeof score == "number" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1">
                   <Image
                     src="/start.svg"
                     alt="Estrella"
@@ -53,7 +51,7 @@ export default async function MangaSection({ params }) {
 
               {/* Validation source */}
               {typeof source == "string" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1">
                   <Image src="/book.svg" alt="Book" width={22} height={22} />
                   <p className="">{source}</p>
                 </div>
@@ -63,22 +61,19 @@ export default async function MangaSection({ params }) {
 
               {/* Validation source */}
               {typeof favorites == "number" ? (
-                <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time} data-aos-anchor-placement="top-bottom" data-aos-easing="ease-in-out">
+                <div className="flex justify-center items-center gap-1">
                   <Image src="/heart.svg" alt="Heart" width={22} height={22} />
                   <p className="">{favorites}</p>
                 </div>
               ) : (
                 ""
               )}
-
-
             </article>
           </section>
           <section className="flex flex-wrap max-md:justify-center gap-2 mb-5 max-md:mb-2" >
             {genres.map((info, index) => {
               return (
                 <p
-                  data-aos="fade" data-aos-delay={index * 200} data-aos-easing="ease-in-out"
                   className=" border px-2 rounded-full text-[15px] text-color_200 font-light"
                   key={info.mal_id}
                 >
@@ -90,10 +85,10 @@ export default async function MangaSection({ params }) {
           <section className="min-h-[400px] max-md:min-h-full">
             {typeof synopsis == "string" && typeof synopsis == "string" ? (
               <>
-                <p className="text-color_300 text-[18px] pb-6 leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
+                <p className="text-color_300 text-[16px] leading-6 pb-6">
                   {synopsis}
                 </p>
-                <p className="text-color_300 text-[18px] leading-relaxed tracking-tight md:tracking-wide lg:tracking-widest">
+                <p className="text-color_300 text-[16px] leading-6">
                   {background}
                 </p>
               </>
@@ -113,7 +108,6 @@ export default async function MangaSection({ params }) {
                     id={info.character.mal_id}
                     name={info.character.name}
                     img={info.character.images.jpg.image_url}
-                    favorites={info.favorites}
                     url="character"
                   />
                 );
@@ -130,7 +124,7 @@ export default async function MangaSection({ params }) {
             <div className="flex items-center justify-center flex-wrap mt-10 gap-y-2">
               {infoGallery.map((info, index) => {
                 return (
-                  <picture key={index} data-aos="fade" data-aos-easing="ease-in-out">
+                  <picture key={index}>
                     <Image
                       src={info.jpg.image_url}
                       alt={`Imagen de ${title}`}
