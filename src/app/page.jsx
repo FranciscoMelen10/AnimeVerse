@@ -35,7 +35,7 @@ export default function Home() {
       <Header />
       <div className="bg-background transit text-foreground flex flex-col overflow-hidden"> {/* Add overflow-hidden */}
         <main className="flex items-center flex-col overflow-hidden"> {/* Add overflow-hidden */}
-          <div className="w-screen bg-cover h-screen flex justify-center items-center bg-[url('../../public/Backgrounds/hunterxhunter.jpg')] " data-aos="fade-up" data-aos-easing="ease-in">
+          <div className="w-screen bg-center bg-cover h-screen flex justify-center items-center bg-[url('../../public/Backgrounds/Onepiece.jpg')] " data-aos="fade-up" data-aos-easing="ease-in">
             <div className="absolute inset-0 bg-black opacity-80"></div>
 
             <section className="relative flex flex-col items-center justify-center space-y-4 text-center text-white bg-transparent" data-aos="fade-up" data-aos-easing="ease-in">

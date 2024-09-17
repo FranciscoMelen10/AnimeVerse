@@ -22,7 +22,7 @@ function AnimeItem({ img = "", title = "", id = "", score = "", favorites = "", 
         <section className="flex justify-between w-full">
           {/* Validation score */}
           {typeof score == "number" ? (
-            <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out">
+            <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 1} data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
               <Image
                 src="/start.svg"
                 alt="Estrella"
@@ -37,7 +37,7 @@ function AnimeItem({ img = "", title = "", id = "", score = "", favorites = "", 
 
           {/* Validation source */}
           {typeof favorites == "number" ? (
-            <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out">
+            <div className="flex justify-center items-center gap-1" data-aos="fade" data-aos-delay={time * 3} data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
               <Image src="/heart.svg" alt="Heart" width={20} height={20} />
               <p>{favorites}</p>
             </div>
